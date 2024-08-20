@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>帝国ゲーム</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <h1>帝国ゲーム</h1>
+    <p>人口: <span id="population">5</span> モモンガ</p>
+    <p>資源: 食料: <span id="food">100</span>, 木材: <span id="wood">100</span>, 石材: <span id="stone">100</span>, 金属: <span id="metal">50</span></p>
+    
+    <button onclick="gatherResources()">資源を集める</button>
+    <button onclick="exploreLand()">土地を探索する</button>
+    <button onclick="saveGame()">保存</button>
+    
+    <h2>マップ</h2>
+    <div id="map"></div>
+
+    <script src="/script.js"></script>
+</body>
+</html>

@@ -33,3 +33,11 @@ button {
     text-align: center;
     border: 1px solid #fff;
 }
+
+.tile.ruby {
+    background-color: red;
+}
+
+.tile.sapphire {
+    background-color: blue;
+}

@@ -54,7 +54,9 @@ function updateUI() {
 }
 
 function updateMap() {
-    mapElement.innerHTML = gameState.map.join('<br>');
+    mapElement.innerHTML = gameState.map.map(tile => 
+        `<div class="tile">${tile}</div>`
+    ).join('');
 }
 
 // 初期UI更新

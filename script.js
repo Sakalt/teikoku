@@ -51,6 +51,58 @@ function exploreLand() {
     updateMap();
 }
 
+// 家を建てる
+function buildHouse() {
+    if (gameState.resources.wood >= 20 && gameState.resources.stone >= 20) {
+        gameState.resources.wood -= 20;
+        gameState.resources.stone -= 20;
+        gameState.buildings.houses += 1;
+
+        // 家を建てたことで住民が増える確率が上がる
+        if (Math.random() < 0.2) { // 20%の確率で住民が増える
+            gameState.population += 1;
+        }
+
+        updateUI();
+    } else {
+        alert('木材または石材が不足しています。');
+    }
+}
+
+// 市場を建てる
+function buildMarket() {
+    if (gameState.resources.wood >= 30 && gameState.resources.stone >= 30) {
+        gameState.resources.wood -= 30;
+        gameState.resources.stone -= 30;
+        gameState.buildings.markets += 1;
+
+        // 市場を建てたことで資源収集の効率が上がる
+        // （具体的な効果は以下の例として追加しています）
+        gameState.resources.food += 10;
+
+        updateUI();
+    } else {
+        alert('木材または石材が不足しています。');
+    }
+}
+
+// 城を建てる
+function buildCastle() {
+    if (gameState.resources.wood >= 50 && gameState.resources.stone >= 50 && gameState.resources.metal >= 50) {
+        gameState.resources.wood -= 50;
+        gameState.resources.stone -= 50;
+        gameState.resources.metal -= 50;
+        gameState.buildings.castles += 1;
+
+        // 城を建てたことで住民が増える
+        gameState.population += 25;
+
+        updateUI();
+    } else {
+        alert('木材、石材、または金属が不足しています。');
+    }
+}
+
 // 六角柱のビルを建てる
 function buildHexagon() {
     if (gameState.resources.metal >= 96) {

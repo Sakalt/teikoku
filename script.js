@@ -2,7 +2,7 @@
 const defaultGameState = {
     resources: { food: 100, wood: 100, stone: 100, metal: 50, ruby: 0, sapphire: 0 },
     population: 5,
-    buildings: { houses: 0, markets: 0, castles: 0 },
+    buildings: { houses: 0, markets: 0, castles: 0, hexagons: 0, skyscrapers: 0 },
     map: []
 };
 
@@ -49,6 +49,40 @@ function exploreLand() {
 
     updateUI();
     updateMap();
+}
+
+// 六角柱のビルを建てる
+function buildHexagon() {
+    if (gameState.resources.metal >= 96) {
+        gameState.resources.metal -= 96;
+        gameState.buildings.hexagons += 1;
+
+        // 住民が増える確率が上がる
+        if (Math.random() < 0.5) { // 50%の確率で住民が増える
+            gameState.population += 1;
+        }
+
+        updateUI();
+    } else {
+        alert('金属が不足しています。');
+    }
+}
+
+// 巨大ビルを建てる
+function buildSkyscraper() {
+    if (gameState.resources.metal >= 128 && gameState.resources.ruby >= 16 && gameState.resources.sapphire >= 16) {
+        gameState.resources.metal -= 128;
+        gameState.resources.ruby -= 16;
+        gameState.resources.sapphire -= 16;
+        gameState.buildings.skyscrapers += 1;
+
+        // 巨大ビルを建てた時に人口が増える
+        gameState.population += 125;
+
+        updateUI();
+    } else {
+        alert('資源が不足しています。');
+    }
 }
 
 // 保存する
